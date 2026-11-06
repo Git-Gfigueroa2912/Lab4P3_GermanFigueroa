@@ -143,4 +143,18 @@ void Miniso::comprarProductos() {
 			tarjetazos--;
 			continue;
 		}
+		if (matriz[fila][columna] != ' ') {
+			carrito.push_back(matriz[fila][columna]);
+			matriz[fila][columna] = ' ';
+			tarjetazos--;
+			cout << "Exito! Agregaste un producto. Te quedan " << tarjetazos << " tarjetazos." << endl;
+		}
+		else {
+			tarjetazos--;
+			cout << "Casilla vacia, por lo tanto no se agrego nada" << endl;
+			cout << " Quedan " << tarjetazos << " tarjetazos." << endl;
+		}
+	}
+}
+
 
