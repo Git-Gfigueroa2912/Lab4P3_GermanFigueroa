@@ -48,3 +48,40 @@ void Miniso::agregarProductos() {
 
 
 }
+void Miniso::listarProductos() {
+	if (listaProductos.empty()) {
+		cout << "No hay productos registrados." << endl;
+		return;
+	}
+
+	for (size_t i = 0; i < listaProductos.size(); i++) {
+		cout << "-***" << i << "***-" << endl;
+		cout << "Producto: " << listaProductos[i].getNombre() << endl;
+		cout << "Precio: " << listaProductos[i].getPrecio() << endl;
+		cout << "Id: " << listaProductos[i].getId() << endl;
+		cout << "Stock: " << listaProductos[i].getStock() << endl;
+		cout << "Marca: " << listaProductos[i].getMarca() << endl;
+		cout << "Sub Categoria: " << listaProductos[i].getSubCategoria() << endl;
+	}
+}
+
+void Miniso::eliminarProductos() {
+	if (listaProductos.empty()) {
+		cout << "No hay productos para eliminar." << endl;
+		return;
+	}
+
+	listarProductos();
+
+	int indice;
+	cout << "Ingrese el indice del producto a eliminar: ";
+	while (!(cin >> indice) || indice < 0 || indice >= static_cast<int>(listaProductos.size())) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Indice invalido. Ingrese el indice del producto a eliminar: ";
+	}
+
+	listaProductos.erase(listaProductos.begin() + indice);
+	cout << "El elemento fue borrado con exito." << endl;
+}
+
