@@ -1,19 +1,54 @@
-// Lab4P3_GermanFigueroa.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
 #include <iostream>
+#include "Miniso.h"
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+    Miniso miniso;
+    int opcion = 0;
+
+    do {
+        cout << "--- Miniso ---" << endl;
+        cout << "1) Agregar Productos" << endl;
+        cout << "2) Listar Productos" << endl;
+        cout << "3) Eliminar Productos" << endl;
+        cout << "4) Comprar" << endl;
+        cout << "0) Salir" << endl;
+        cout << "Ingrese la opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            cout << " Agregando Productos " << endl;
+            miniso.agregarProductos();
+            break;
+
+        case 2:
+            cout << " Listando Productos " << endl;
+            miniso.listarProductos();
+            break;
+
+        case 3:
+            cout << " Eliminando Productos " << endl;
+            miniso.eliminarProductos();
+            break;
+
+        case 4:
+            cout << " Comprando Productos " << endl;
+            miniso.comprarProductos();
+            break;
+
+        case 0: 
+            cout << " Saliendo del programa " << endl;
+            break;
+
+        default:
+            cout << " Opcion invalida " << endl;
+            break;
+
+        }
+
+    } while opcion(!= 0);
+
+    return 0;
+    
 }
-
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
-
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
