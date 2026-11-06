@@ -84,4 +84,63 @@ void Miniso::eliminarProductos() {
 	listaProductos.erase(listaProductos.begin() + indice);
 	cout << "El elemento fue borrado con exito." << endl;
 }
+void Miniso::comprarProductos() {
+	char matriz[10][10];
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			matriz[i][j] = ' ';
+		}
+	}
+
+	srand(time(0));
+	if (!listaProductos.empty()) {
+		for (size_t k = 0; k < listaProductos.size(); k++) {
+			int f = rand() % 10;
+			int c = rand() % 10;
+			while (matriz[f][c] != ' ') {
+				f = rand() % 10;
+				c = rand() % 10;
+			}
+			matriz[f][c] = listaProductos[k].getNombre()[0];
+		}
+	}
+
+	vector<char> carrito;
+	int tarjetazos = 10;
+
+	while (tarjetazos > 0) {
+		cout << "Te quedan " << tarjetazos << " tarjetazos." << endl;
+		cout << "  0 1 2 3 4 5 6 7 8 9" << endl;
+		for (int i = 0; i < 10; i++) {
+			cout << i << "|";
+			for (int j = 0; j < 10; j++) {
+				cout << matriz[i][j] << " ";
+			}
+			cout << endl;
+		}
+
+		cout << "Carrito: [ ";
+		for (size_t i = 0; i < carrito.size(); i++) {
+			cout << carrito[i] << " ";
+		}
+		cout << "]" << endl;
+
+		int fila, columna;
+		cout << "Ingresa la fila (0-9): ";
+		if (!(cin >> fila) || fila < 0 || fila > 9) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Casilla Invalida. No se agrego ningun producto." << endl;
+			tarjetazos--;
+			continue;
+		}
+
+		cout << "Ingresa la columna (0-9): ";
+		if (!(cin >> columna) || columna < 0 || columna > 9) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Casilla Invalida. No se agrego ningun producto." << endl;
+			tarjetazos--;
+			continue;
+		}
 
